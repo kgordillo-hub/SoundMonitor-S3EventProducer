@@ -1,0 +1,4 @@
+node_modules
+.terraform
+*.zip
+terraform/.terraform.lock.hcl

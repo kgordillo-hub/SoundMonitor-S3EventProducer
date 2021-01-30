@@ -1,0 +1,28 @@
+{
+  "name": "soundmonitor-s3eventproducer",
+  "version": "1.0.0",
+  "description": "S3 Event Producer Lambda",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlienX456/SoundMonitor-S3EventProducer.git"
+  },
+  "keywords": [
+    "S3",
+    "AWS",
+    "Monitor",
+    "KafkaJS"
+  ],
+  "author": "Esteban Elias Romero jaimes",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/AlienX456/SoundMonitor-S3EventProducer/issues"
+  },
+  "homepage": "https://github.com/AlienX456/SoundMonitor-S3EventProducer#readme",
+  "dependencies": {
+    "kafkajs": "1.15.0"
+  }
+}
