@@ -1,0 +1,45 @@
+version: 2.1
+
+jobs:
+    dependencies-zip-generation:
+        docker:
+            - image: node:12.20.1-stretch-slim
+        steps:
+            - checkout
+            - run:
+                name: install node modules
+                command: npm install
+            - run:
+                name: zip and save source code
+                command: zip -r function.zip index.js node_modules
+            - persist_to_workspace:
+                root: ./
+                paths: 
+                    - function.zip
+    deploy-lambda:
+        docker:
+            - image: hashicorp/terraform:light
+        steps:
+            - checkout
+            - attach_workspace:
+                at: ./terraform
+            - run:
+                name: Terraform init
+                command: |
+                    cd terraform &&
+                    terraform init
+            - run:
+                name: Terraform provide and deploy
+                command: |
+                    cd terraform &&
+                    terraform apply -auto-approve
+
+workflows:
+    main:
+        jobs:
+            - dependencies-zip-generation
+            - deploy-lambda:
+                context: AWSContext
+                requires: 
+                    - dependencies-zip-generation
+            
