@@ -10,6 +10,9 @@ jobs:
                 name: install node modules
                 command: npm install
             - run:
+                name: Install zip
+                command: apt-get install zip
+            - run:
                 name: zip and save source code
                 command: zip -r function.zip index.js node_modules
             - persist_to_workspace:
