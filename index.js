@@ -7,8 +7,11 @@ exports.handler = (event, context, callback) => {
     const audioName = event.Records[0].s3.object.key;
     console.log("Uploaded New audio : ",audioName);
 
+    var audioUploadTopic = process.env.TOPIC;
+    var kafkaEndpoints = process.env.KAFKA_ENDPOINTS.split(',');
+
     const kafka = new Kafka({
-        brokers: ['200.69.103.29:26240']
+        brokers: kafkaEndpoints
     });
 
     const producer = kafka.producer()
@@ -16,7 +19,7 @@ exports.handler = (event, context, callback) => {
     const run = async () => {
         await producer.connect()
         await producer.send({
-            topic: 'audio-upload-event',
+            topic: audioUploadTopic,
             messages: [
                 { value: audioName },
             ],
