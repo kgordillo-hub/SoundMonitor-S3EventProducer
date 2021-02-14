@@ -1,5 +1,9 @@
-variable "bucket_arn" {
-  description =  "audio files bucket"
+variable "records_bucket_arn" {
+  description =  "audio files bucket ARN"
+}
+
+variable "records_bucket_name" {
+  description =  "audio files bucket NAME"
 }
 
 variable "aws_region" {

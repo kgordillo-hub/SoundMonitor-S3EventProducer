@@ -44,7 +44,9 @@ workflows:
         jobs:
             - dependencies-zip-generation
             - deploy-lambda:
-                context: AWSContext
+                context: 
+                    - AWSContext
+                    - SoundMonitorTerraformContext
                 requires: 
                     - dependencies-zip-generation
             
