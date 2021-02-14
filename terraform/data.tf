@@ -1,4 +1,4 @@
-variable "bucket" {
+variable "bucket_arn" {
   description =  "audio files bucket"
 }
 

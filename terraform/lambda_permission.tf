@@ -6,12 +6,9 @@ resource "aws_lambda_permission" "allow_bucket" {
   source_arn    = aws_s3_bucket.bucket.arn
 }
 
-resource "aws_s3_bucket" "bucket" {
-  bucket = var.bucket
-}
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
-  bucket = aws_s3_bucket.bucket.id
+  bucket = var.bucket_arn
 
   lambda_function {
     lambda_function_arn = aws_lambda_function.func.arn
