@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-    dependencies-zip-generation:
+    build:
         docker:
             - image: node:12.20.1-stretch-slim
         steps:
@@ -21,7 +21,7 @@ jobs:
                 root: ./
                 paths: 
                     - function.zip
-    deploy-lambda:
+    deploy:
         docker:
             - image: hashicorp/terraform:light
         steps:
