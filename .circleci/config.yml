@@ -48,5 +48,5 @@ workflows:
                     - AWSContext
                     - SoundMonitorTerraformContext
                 requires: 
-                    - dependencies-zip-generation
+                    - build
             
