@@ -45,8 +45,8 @@ workflows:
             - build
             - deploy:
                 context: 
-                    - AWSContext
-                    - SoundMonitorTerraformContext
+                    - TerraformContext
+                    - SoundMonitor-KafkaContext
                 requires: 
                     - build
             

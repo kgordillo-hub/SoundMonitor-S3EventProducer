@@ -23,3 +23,11 @@ variable "aws_provider_key" {
 variable "aws_provider_secret" {
   description = "AWS secret for deploy and infrastructure providing"
 }
+
+variable "kafka_data_upload_event" {
+  description = "Kafka event of data uploading"
+}
+
+variable "kafka_bootstrap_server_one" {
+  description =  "Endpoint of kafka server one"
+}
