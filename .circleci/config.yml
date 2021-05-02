@@ -1,7 +1,16 @@
 version: 2.1
 
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.2
+
 jobs:
-    dependencies-zip-generation:
+    sonar:
+        docker:
+        - image: 'node:latest'
+        steps:
+        - checkout
+        - sonarcloud/scan
+    build:
         docker:
             - image: node:12.20.1-stretch-slim
         steps:
@@ -21,7 +30,7 @@ jobs:
                 root: ./
                 paths: 
                     - function.zip
-    deploy-lambda:
+    deploy:
         docker:
             - image: hashicorp/terraform:light
         steps:
@@ -42,9 +51,19 @@ jobs:
 workflows:
     main:
         jobs:
-            - dependencies-zip-generation
-            - deploy-lambda:
-                context: AWSContext
+            - sonar
+            - build:
                 requires: 
-                    - dependencies-zip-generation
+                    - sonar
+            - deploy:
+                context: 
+                    - TerraformContext
+                    - SoundMonitor-KafkaContext
+                requires: 
+                    - build
+                filters:
+                    branches:
+                        only:
+                            - master
+                            - qa
             

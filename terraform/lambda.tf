@@ -13,8 +13,8 @@ resource "aws_lambda_function" "func" {
 
   environment {
     variables = {
-      KAFKA_ENDPOINTS = "200.69.103.29:26240",
-      TOPIC = "audio-upload-event"
+      KAFKA_ENDPOINTS = var.kafka_bootstrap_server_one,
+      TOPIC = var.kafka_data_upload_event
     }
   }
 }
