@@ -1,6 +1,15 @@
 version: 2.1
 
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.2
+
 jobs:
+    sonar:
+        docker:
+        - image: 'node:latest'
+        steps:
+        - checkout
+        - sonarcloud/scan
     build:
         docker:
             - image: node:12.20.1-stretch-slim
@@ -42,11 +51,19 @@ jobs:
 workflows:
     main:
         jobs:
-            - build
+            - sonar
+            - build:
+                requires: 
+                    - sonar
             - deploy:
                 context: 
                     - TerraformContext
                     - SoundMonitor-KafkaContext
                 requires: 
                     - build
+                filters:
+                    branches:
+                        only:
+                            - master
+                            - qa
             
