@@ -61,4 +61,9 @@ workflows:
                     - SoundMonitor-KafkaContext
                 requires: 
                     - build
+                filters:
+                    branches:
+                        only:
+                            - master
+                            - qa
             
