@@ -1,0 +1,10 @@
+[
+    {
+        "bucketName": "soundmonitor-records",
+        "topicName": "data_upload_event"
+    },
+    {
+        "bucketName": "soundmonitor-audiodata",
+        "topicName": "audio_upload_event"
+    }
+]
