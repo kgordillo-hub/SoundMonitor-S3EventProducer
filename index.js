@@ -5,11 +5,11 @@ const map = require('./s3-topic-map.json')
 exports.handler = (event, context, callback) => {
 
     console.log("Reading options from event:\n", util.inspect(event, {depth: 7}));
-    console.log("Uploaded data : ",fileName);
 
     for (item of map) {
         if (item.bucketName === event.Records[0].s3.bucket.name) {
             const fileName = event.Records[0].s3.object.key;
+            console.log("Uploaded data : ",fileName);
 
             var kafkaEndpoints = process.env.KAFKA_ENDPOINTS.split(',');
         
@@ -22,7 +22,7 @@ exports.handler = (event, context, callback) => {
             const run = async () => {
                 await producer.connect()
                 await producer.send({
-                    topic: audioUploadTopic,
+                    topic: item.topicName,
                     messages: [
                         { value: fileName },
                     ],
