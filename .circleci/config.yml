@@ -45,7 +45,7 @@ jobs:
             - run:
                 name: Terraform provide and deploy
                 command: |
-                    cd terraform &&
+                    cd IAC &&
                     terraform apply -auto-approve
 
 workflows:
