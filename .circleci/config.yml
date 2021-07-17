@@ -58,7 +58,6 @@ workflows:
             - deploy:
                 context: 
                     - TerraformContext
-                    - SoundMonitor-KafkaContext
                 requires: 
                     - build
                 filters:
