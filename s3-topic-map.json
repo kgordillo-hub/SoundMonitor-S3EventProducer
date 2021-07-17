@@ -6,5 +6,9 @@
     {
         "bucketName": "soundmonitor-audiodata",
         "topicName": "audio_upload_event"
+    },
+    {
+        "bucketName": "soundmonitor-visualdata",
+        "topicName": "visual_upload_event"
     }
 ]
