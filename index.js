@@ -4,7 +4,7 @@ const map = require('./s3-topic-map.json')
 
 exports.handler = (event, context, callback) => {
 
-    console.log("Reading options from event:\n", util.inspect(event, {depth: 7}));
+    console.log("Reading options from event = \n", util.inspect(event, {depth: 7}));
 
     for (item of map) {
         if (item.bucketName === event.Records[0].s3.bucket.name) {
