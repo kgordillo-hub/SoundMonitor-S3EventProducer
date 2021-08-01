@@ -25,7 +25,7 @@ jobs:
                     apt-get install zip -y
             - run:
                 name: zip and save source code
-                command: zip -r function.zip index.js node_modules
+                command: zip -r function.zip index.js s3-topic-map.json node_modules
             - persist_to_workspace:
                 root: ./
                 paths: 
@@ -36,16 +36,16 @@ jobs:
         steps:
             - checkout
             - attach_workspace:
-                at: ./terraform
+                at: ./IAC
             - run:
                 name: Terraform init
                 command: |
-                    cd terraform &&
+                    cd IAC &&
                     terraform init
             - run:
                 name: Terraform provide and deploy
                 command: |
-                    cd terraform &&
+                    cd IAC &&
                     terraform apply -auto-approve
 
 workflows:
@@ -58,7 +58,6 @@ workflows:
             - deploy:
                 context: 
                     - TerraformContext
-                    - SoundMonitor-KafkaContext
                 requires: 
                     - build
                 filters:
