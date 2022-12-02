@@ -4,11 +4,11 @@
         "topicName": "data_upload_event"
     },
     {
-        "bucketName": "soundmonitor-audiodata",
+        "bucketName": "soundmonitor-audiodata-03",
         "topicName": "audio_upload_event"
     },
     {
-        "bucketName": "soundmonitor-visualdata",
+        "bucketName": "soundmonitor-visualdata-03",
         "topicName": "visual_upload_event"
     }
 ]
