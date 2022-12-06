@@ -1,9 +1,5 @@
 [
     {
-        "bucketName": "soundmonitor-records",
-        "topicName": "data_upload_event"
-    },
-    {
         "bucketName": "soundmonitor-audiodata-03",
         "topicName": "audio_upload_event"
     },
